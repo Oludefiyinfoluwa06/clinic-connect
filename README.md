@@ -26,7 +26,7 @@ To digitize and streamline the process of creating new patient records when stud
 
 ## 🗂️ Folder Structure (Relevant Parts)
 
-\`\`\`
+```
 app/
 ├── Http/
 │ ├── Controllers/
@@ -55,21 +55,21 @@ resources/
 │ │ └── sidebar.blade.php
 routes/
 └── web.php
-\`\`\`
+```
 
 ---
 
 ## 🔐 Authentication
 
-Admin login is implemented manually via the \`AuthController\`. It checks the provided email/password against stored records (hashed password check) in the \`admins\` table.
+Admin login is implemented manually via the `AuthController`. It checks the provided email/password against stored records (hashed password check) in the `admins` table.
 
 ### Routes
 
-\`\`\`php
+```php
 Route::get('login', [AuthController::class, 'showLoginPage'])->name('login');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('logout',[AuthController::class, 'logout'])->name('logout');
-\`\`\`
+```
 
 ---
 
@@ -77,7 +77,7 @@ Route::post('logout',[AuthController::class, 'logout'])->name('logout');
 
 ### Routes
 
-\`\`\`php
+```php
 Route::middleware('auth:admin')->group(function () {
 Route::prefix('patients')
 ->name('patients.')
@@ -91,44 +91,44 @@ Route::put('{patient}', 'update')->name('update');
 Route::delete('{patient}', 'destroy')->name('destroy');
 });
 });
-\`\`\`
+```
 
 ### Model Fields
 
-Ensure your \`Patient\` model and migration include:
+Ensure your `Patient` model and migration include:
 
--   \`surname\`
--   \`first_name\`
--   \`other_name\` (nullable)
--   \`hospital_number\` (auto-generated)
--   \`place_of_origin\`
--   \`state\`
--   \`local_government_area\`
--   \`phone_number\`
--   \`address\`
+-   `surname`
+-   `first_name`
+-   `other_name` (nullable)
+-   `hospital_number` (auto-generated)
+-   `place_of_origin`
+-   `state`
+-   `local_government_area`
+-   `phone_number`
+-   `address`
 
 Related tables:
 
--   **NextOfKin**: \`patient_id\`, \`full_name\`, \`relationship\`, \`phone_number\`, \`address\`
--   **VitalSign**: \`patient_id\`, \`temperature\`, \`blood_pressure\`, \`pulse\`
+-   **NextOfKin**: `patient_id`, `full_name`, `relationship`, `phone_number`, `address`
+-   **VitalSign**: `patient_id`, `temperature`, `blood_pressure`, `pulse`
 
 ---
 
 ## 🖥️ Blade Components
 
--   **Input**: \`<x-input name="field" label="Label" :value="..." required />\`
--   **Button**: \`<x-button tone="primary">Click</x-button>\`
--   **Card**: \`<x-card title="Title" :value="$value" icon="users" tone="primary" />\`
+-   **Input**: `<x-input name="field" label="Label" :value="..." required />`
+-   **Button**: `<x-button tone="primary">Click</x-button>`
+-   **Card**: `<x-card title="Title" :value="$value" icon="users" tone="primary" />`
 
 ---
 
 ## ✅ Setup Instructions
 
 1. Clone the repository
-2. Run \`composer install\`
-3. Copy \`.env.example\` to \`.env\` and configure your database
-4. Run \`php artisan migrate\`
-5. (Optional) Run \`php artisan db:seed\` to create an admin
-6. Run \`php artisan serve\`
+2. Run `composer install`
+3. Copy `.env.example` to `.env` and configure your database
+4. Run `php artisan migrate`
+5. (Optional) Run `php artisan db:seed` to create an admin
+6. Run `php artisan serve`
 
 ---
