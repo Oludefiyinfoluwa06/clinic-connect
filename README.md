@@ -79,17 +79,17 @@ Route::post('logout',[AuthController::class, 'logout'])->name('logout');
 
 ```php
 Route::middleware('auth:admin')->group(function () {
-Route::prefix('patients')
-->name('patients.')
-->controller(PatientController::class)
-->group(function () {
-Route::get('/', 'index')->name('index');
-Route::get('create', 'create')->name('create');
-Route::post('/', 'store')->name('store');
-Route::get('{patient}/edit', 'edit')->name('edit');
-Route::put('{patient}', 'update')->name('update');
-Route::delete('{patient}', 'destroy')->name('destroy');
-});
+    Route::prefix('patients')
+    ->name('patients.')
+    ->controller(PatientController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('{patient}/edit', 'edit')->name('edit');
+        Route::put('{patient}', 'update')->name('update');
+        Route::delete('{patient}', 'destroy')->name('destroy');
+    });
 });
 ```
 
