@@ -18,6 +18,14 @@ class PatientController extends Controller
 
         return view('app.pages.dashboard.patients.index', compact('patients'));
     }
+    public function getPatients()
+    {
+        $patients = Patients::with(['nextOfKin', 'vitalSigns'])
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(15);
+
+        return json_encode($patients);
+    }
 
     public function create()
     {

@@ -13,6 +13,15 @@ Route::prefix('auth')
         Route::post('/login', 'login')->name('auth.login');
     });
 
+Route::prefix('patients')
+        ->controller(PatientController::class)
+        ->group(function () {
+            Route::get('/all', 'getPatients');
+            Route::post('/new', 'store');
+            Route::put('/update/{patient}', 'update');
+            Route::delete('/delete/{patient}', 'destroy');
+        });
+
 Route::middleware('auth:admin')->group(function() {
     Route::get('/', function () {
         return redirect()->route('dashboard');
