@@ -12,64 +12,59 @@
 }
 
 body {
-    @apply bg-gray-100 text-gray-700;
-    font-family: Rubik;
-}
-
-h1 {
-    @apply text-2xl font-bold text-red-500;
+    @apply bg-gradient-to-br from-slate-50 to-slate-100 text-gray-700;
+    font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
 }
 
 h2 {
-    @apply text-xl font-bold my-4;
+    @apply text-xl font-semibold my-4;
 }
 
 h3 {
-    @apply text-lg font-bold my-4;
+    @apply text-lg font-semibold my-4;
 }
 
 ul {
-    @apply my-10;
+    @apply my-6 space-y-2;
 }
 
 p {
-    @apply my-2;
-}
-
-header {
-    @apply bg-white;
-
-    nav {
-        @apply flex items-center gap-5 max-w-screen-lg px-12 py-4 mx-auto;
-    }
-
-    h1 {
-        @apply mr-auto;
-    }
-}
-
-form {
-    @apply max-w-screen-sm;
-}
-
-input,
-select,
-textarea {
-    @apply block w-full mt-2 mb-4 p-2;
-}
-
-.container {
-    @apply max-w-screen-lg mx-auto px-12 py-8;
+    @apply my-3 leading-relaxed;
 }
 
 .card {
-    @apply bg-white rounded border border-gray-200 p-3 my-2 flex justify-between items-center;
+    @apply bg-white shadow-2xl rounded-2xl border border-gray-200 p-8;
 }
 
-.highlight {
-    @apply border-l-4 border-l-red-500;
+.btn-primary {
+    @apply w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform transition duration-200 ease-in-out hover:scale-105 active:scale-95 cursor-pointer;
 }
 
-.btn {
-    @apply rounded px-3 py-2 bg-gray-200 hover:bg-red-500 hover:text-white cursor-pointer;
+.input-field {
+    @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition duration-200 ease-in-out hover:border-gray-400;
+}
+
+.icon-container {
+    @apply mx-auto h-16 w-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg;
+}
+
+.error-message {
+    @apply bg-red-50 border-l-4 border-red-400 p-4 rounded-md text-sm text-red-700;
+}
+
+.sidebar-transition {
+    transition: transform 0.3s ease-in-out;
+}
+.gradient-text {
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.nav-item:hover {
+    transform: translateX(4px);
+}
+.nav-item {
+    transition: all 0.2s ease-in-out;
 }
